@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.ss.task.model.TaskUserEntity" table="taskuser" schema="" catalog="task">
+        <id name="id">
+            <column name="id" sql-type="int" not-null="true"/>
+            <generator class="increment"/>
+        </id>
+        <property name="detail">
+            <column name="detail" sql-type="text" length="65535"/>
+        </property>
+        <property name="status">
+            <column name="status" sql-type="int"/>
+        </property>
+        <property name="subdate">
+            <column name="subdate" sql-type="date"/>
+        </property>
+        <property name="evadate">
+            <column name="evadate" sql-type="date"/>
+        </property>
+        <property name="comment">
+            <column name="comment" sql-type="text" length="65535"/>
+        </property>
+        <property name="report">
+            <column name="report" sql-type="text" length="65535"/>
+        </property>
+        <many-to-one name="task" class="com.ss.task.model.TaskEntity">
+            <column name="taskid" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="user" class="com.ss.task.model.UserEntity">
+            <column name="userid" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

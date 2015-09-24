@@ -1,0 +1,101 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<div class="panel-group" id="sidebar">
+    <div class="panel">
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#sidebar"
+               href="#task-manage">
+                <h5>任务管理<span class="glyphicon glyphicon-chevron-down"></span></h5>
+            </a>
+        </div>
+        <div class="panel-collapse collapse in" id="task-manage">
+            <ul class="list-group">
+                <li id="task-list" class="list-group-item">
+                    <a href="./task/list">全部任务列表</a>
+                </li>
+                <li id="member-task-list" class="list-group-item">
+                    <a href="./task/member">我执行的任务</a>
+                </li>
+                <c:if test="${sessionScope.isLeader}">
+                <li id="my-task-list" class="list-group-item">
+                    <a href="./task/my">我发布的任务</a>
+                </li>
+                <li id="task-publish" class="list-group-item">
+                    <a href="./task/add">任务发布</a>
+                </li>
+                </c:if>
+            </ul>
+        </div>
+    </div>
+    <c:if test="${user.admin == 1}">
+    <div class="panel">
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#sidebar" href="#user-manage">
+                <h5>用户管理<span class="glyphicon glyphicon-chevron-down"></span></h5>
+            </a>
+        </div>
+        <div class="panel-collapse collapse in" id="user-manage">
+            <ul class="list-group">
+                <li class="list-group-item" id="list-user">
+                    <a href="./user/list">用户列表</a>
+                </li>
+                <li class="list-group-item" id="add-user">
+                    <a href="./user/add">增加用户</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#sidebar" href="#dept-manage">
+                <h5>部门管理<span class="glyphicon glyphicon-chevron-down"></span></h5>
+            </a>
+        </div>
+        <div class="panel-collapse collapse in" id="dept-manage">
+            <ul class="list-group">
+                <li class="list-group-item" id="list-dept">
+                    <a href="./dept/list">部门列表</a>
+                </li>
+                <li class="list-group-item" id="dept-add">
+                    <a href="./dept/add">增加部门</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#sidebar" href="#dept-manage">
+                <h5>公告管理<span class="glyphicon glyphicon-chevron-down"></span></h5>
+            </a>
+        </div>
+        <div class="panel-collapse collapse in" id="news-manage">
+            <ul class="list-group">
+                <li class="list-group-item" id="list-news">
+                    <a href="./news/list">公告列表</a>
+                </li>
+                <li class="list-group-item" id="news-add">
+                    <a href="./news/add">公告发布</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </c:if>
+    <div class="panel">
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#sidebar" href="#account-manage">
+                <h5>账户管理<span class="glyphicon glyphicon-chevron-down"></span></h5>
+            </a>
+        </div>
+        <div id="account-manage" class="panel-collapse collapse in">
+            <ul class="list-group">
+                <%--<li class="list-group-item">--%>
+                    <%--<a href="javascript:void(0);">账户设置</a>--%>
+                <%--</li>--%>
+                <li class="list-group-item">
+                    <a href="/user/modifypw">密码修改</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

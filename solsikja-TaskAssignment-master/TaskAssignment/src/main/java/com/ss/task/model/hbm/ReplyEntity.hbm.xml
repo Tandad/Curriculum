@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.ss.task.model.ReplyEntity" table="reply" schema="" catalog="task">
+        <id name="id">
+            <column name="id" sql-type="int" not-null="true"/>
+            <generator class="increment"/>
+        </id>
+        <property name="content">
+            <column name="content" sql-type="varchar" length="2000"/>
+        </property>
+        <property name="pubtime">
+            <column name="pubtime" sql-type="date"/>
+        </property>
+        <many-to-one name="user" class="com.ss.task.model.UserEntity">
+            <column name="user" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="replyuser" class="com.ss.task.model.UserEntity">
+            <column name="replyuser"/>
+        </many-to-one>
+        <many-to-one name="task" class="com.ss.task.model.TaskEntity">
+            <column name="task" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

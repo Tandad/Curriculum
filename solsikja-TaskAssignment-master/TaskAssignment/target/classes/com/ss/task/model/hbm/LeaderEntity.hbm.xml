@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.ss.task.model.LeaderEntity" table="leader" schema="" catalog="task">
+        <id name="id">
+            <column name="id" sql-type="int" not-null="true"/>
+            <generator class="increment"/>
+        </id>
+        <property name="title">
+            <column name="title" sql-type="varchar" not-null="true"/>
+        </property>
+        <many-to-one name="department" class="com.ss.task.model.DepartmentEntity">
+            <column name="dept" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="leader" class="com.ss.task.model.UserEntity">
+            <column name="leader" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

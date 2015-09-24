@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.ss.task.model.EvaluationDetailEntity" table="evaluation_detail" schema="" catalog="task">
+        <id name="id">
+            <column name="id" sql-type="int" not-null="true"/>
+            <generator class="increment"/>
+        </id>
+        <property name="leader">
+            <column name="leader" sql-type="float" precision="255" scale="2"/>
+        </property>
+        <property name="otherLeader">
+            <column name="otherLeader" sql-type="float" precision="255" scale="2"/>
+        </property>
+        <property name="otherDept">
+            <column name="otherDept" sql-type="float" precision="255" scale="2"/>
+        </property>
+        <property name="total">
+            <column name="total" sql-type="float" precision="255" scale="2"/>
+        </property>
+
+        <many-to-one name="user" class="com.ss.task.model.UserEntity">
+            <column name="user" not-null="true"/>
+        </many-to-one>
+
+        <many-to-one name="report" class="com.ss.task.model.EvaluationReportEntity">
+            <column name="report" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

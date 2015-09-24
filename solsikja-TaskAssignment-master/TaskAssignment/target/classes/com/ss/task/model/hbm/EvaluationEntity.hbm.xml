@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.ss.task.model.EvaluationEntity" table="evaluation" schema="" catalog="task">
+        <id name="id">
+            <column name="id" sql-type="int" not-null="true"/>
+            <generator class="increment"/>
+        </id>
+
+        <many-to-one name="user" class="com.ss.task.model.UserEntity">
+            <column name="user" not-null="true"/>
+        </many-to-one>
+
+        <many-to-one name="evauser" class="com.ss.task.model.UserEntity">
+            <column name="evauser" not-null="true"/>
+        </many-to-one>
+
+        <many-to-one name="type" class="com.ss.task.model.EvaTypeEntity">
+            <column name="type" not-null="true"/>
+        </many-to-one>
+
+        <property name="score">
+            <column name="score" sql-type="int"/>
+        </property>
+        <property name="complete">
+            <column name="complete" sql-type="int"/>
+        </property>
+        <property name="evadate">
+            <column name="evadate" sql-type="date"/>
+        </property>
+    </class>
+</hibernate-mapping>
